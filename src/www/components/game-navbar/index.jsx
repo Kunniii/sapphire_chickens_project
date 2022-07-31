@@ -69,6 +69,8 @@ function GameNavbar(props) {
 					{principal?.toString()?.slice(0, 3)} ...{' '}
 					{principal?.toString()?.slice(60, 63)}
 				</WalletAddress>
+
+				ádas
 			</Wrapper>
 		</Container>
 	);

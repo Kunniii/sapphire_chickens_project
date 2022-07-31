@@ -5,6 +5,19 @@ type UserInfoExt =
    operators: vec principal;
    tokens: vec nat;
  };
+type UserInfo = 
+ record {
+   address: Address;
+   alias: text;
+   avatar: text;
+   createTime: Time;
+   dob: text;
+   first_name: text;
+   gender: bool;
+   last_name: text;
+   phone_number: text;
+   user_address: text;
+ };
 type TxRecord = 
  record {
    caller: principal;
@@ -59,6 +72,9 @@ type NFTSale =
                                }) -> (TxReceipt);
    batchTransferFrom: (principal, principal, vec nat) -> (TxReceipt);
    burn: (nat) -> (TxReceipt);
+   createAccount: (principal, UserInfo) -> (vec UserInfo);
+   deleteAccount: (principal) -> (opt UserInfo);
+   getAll: () -> (vec UserInfo);
    getAllTokens: () -> (vec TokenInfoExt) query;
    getOperator: (nat) -> (principal) query;
    getTokenInfo: (nat) -> (TokenInfoExt) query;
@@ -78,6 +94,7 @@ type NFTSale =
    totalSupply: () -> (nat) query;
    transfer: (principal, nat) -> (TxReceipt);
    transferFrom: (principal, principal, nat) -> (TxReceipt);
+   updateAccount: (principal, UserInfo) -> (opt UserInfo);
  };
 type MintResult = 
  variant {
@@ -93,4 +110,5 @@ type Errors =
    TokenNotExist;
    Unauthorized;
  };
+type Address = text;
 service : (principal) -> NFTSale

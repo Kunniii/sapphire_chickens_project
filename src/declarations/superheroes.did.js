@@ -10,8 +10,21 @@ export const idlFactory = ({ IDL }) => {
     'Ok' : IDL.Tuple(IDL.Nat, IDL.Nat),
     'Err' : Errors,
   });
-  const TokenMetadata__1 = IDL.Record({ 'tokenUri' : IDL.Text });
   const Time = IDL.Int;
+  const Address = IDL.Text;
+  const UserInfo = IDL.Record({
+    'dob' : IDL.Text,
+    'alias' : IDL.Text,
+    'createTime' : Time,
+    'user_address' : IDL.Text,
+    'address' : Address,
+    'gender' : IDL.Bool,
+    'first_name' : IDL.Text,
+    'last_name' : IDL.Text,
+    'phone_number' : IDL.Text,
+    'avatar' : IDL.Text,
+  });
+  const TokenMetadata__1 = IDL.Record({ 'tokenUri' : IDL.Text });
   const TokenInfoExt = IDL.Record({
     'owner' : IDL.Principal,
     'metadata' : IDL.Opt(TokenMetadata__1),
@@ -68,6 +81,13 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
     'burn' : IDL.Func([IDL.Nat], [TxReceipt], []),
+    'createAccount' : IDL.Func(
+        [IDL.Principal, UserInfo],
+        [IDL.Vec(UserInfo)],
+        [],
+      ),
+    'deleteAccount' : IDL.Func([IDL.Principal], [IDL.Opt(UserInfo)], []),
+    'getAll' : IDL.Func([], [IDL.Vec(UserInfo)], []),
     'getAllTokens' : IDL.Func([], [IDL.Vec(TokenInfoExt)], ['query']),
     'getOperator' : IDL.Func([IDL.Nat], [IDL.Principal], ['query']),
     'getTokenInfo' : IDL.Func([IDL.Nat], [TokenInfoExt], ['query']),
@@ -113,6 +133,11 @@ export const idlFactory = ({ IDL }) => {
     'transferFrom' : IDL.Func(
         [IDL.Principal, IDL.Principal, IDL.Nat],
         [TxReceipt],
+        [],
+      ),
+    'updateAccount' : IDL.Func(
+        [IDL.Principal, UserInfo],
+        [IDL.Opt(UserInfo)],
         [],
       ),
   });

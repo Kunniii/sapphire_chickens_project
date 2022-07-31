@@ -1,6 +1,7 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
 
+export type Address = string;
 export type Errors = { 'Unauthorized' : null } |
   { 'TokenNotExist' : null } |
   { 'InvalidOperator' : null };
@@ -22,6 +23,9 @@ export interface NFTSale {
     TxReceipt,
   >,
   'burn' : ActorMethod<[bigint], TxReceipt>,
+  'createAccount' : ActorMethod<[Principal, UserInfo], Array<UserInfo>>,
+  'deleteAccount' : ActorMethod<[Principal], [] | [UserInfo]>,
+  'getAll' : ActorMethod<[], Array<UserInfo>>,
   'getAllTokens' : ActorMethod<[], Array<TokenInfoExt>>,
   'getOperator' : ActorMethod<[bigint], Principal>,
   'getTokenInfo' : ActorMethod<[bigint], TokenInfoExt>,
@@ -44,6 +48,7 @@ export interface NFTSale {
   'totalSupply' : ActorMethod<[], bigint>,
   'transfer' : ActorMethod<[Principal, bigint], TxReceipt>,
   'transferFrom' : ActorMethod<[Principal, Principal, bigint], TxReceipt>,
+  'updateAccount' : ActorMethod<[Principal, UserInfo], [] | [UserInfo]>,
 }
 export type Operation = { 'transferFrom' : null } |
   { 'burn' : null } |
@@ -76,6 +81,18 @@ export interface TxRecord {
   'timestamp' : Time,
   'caller' : Principal,
   'index' : bigint,
+}
+export interface UserInfo {
+  'dob' : string,
+  'alias' : string,
+  'createTime' : Time,
+  'user_address' : string,
+  'address' : Address,
+  'gender' : boolean,
+  'first_name' : string,
+  'last_name' : string,
+  'phone_number' : string,
+  'avatar' : string,
 }
 export interface UserInfoExt {
   'allowedTokens' : Array<bigint>,

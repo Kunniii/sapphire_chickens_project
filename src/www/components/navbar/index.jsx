@@ -87,8 +87,11 @@ function Navbar(props) {
 						<Link to='/' style={{ color: 'black' }} onClick={scrollToTop}>
 							<MenuItem>Home</MenuItem>
 						</Link>
-						<Link to='nft/create' style={{ color: 'black' }}>
+						<Link to='/nft/create' style={{ color: 'black' }}>
 							<MenuItem>Create</MenuItem>
+						</Link>
+						<Link to='/customers' style={{ color: 'black' }}>
+							<MenuItem>Customers</MenuItem>
 						</Link>
 					</Menu>
 
