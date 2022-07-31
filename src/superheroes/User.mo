@@ -9,5 +9,11 @@ module {
         createTime: Time.Time;
         alias: Text;
         avatar: Text;
+        first_name: Text;
+        last_name: Text;
+        gender: Bool;
+        dob: Text;
+        phone_number: Text;
+        user_address: Text;
     }
 }

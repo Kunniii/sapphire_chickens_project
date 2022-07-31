@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dfx canister create --all
+dfx build superheroes
+dfx canister install superheroes --argument="(principal \"$(dfx identity get-principal)\")"

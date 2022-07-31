@@ -876,4 +876,23 @@ shared(msg) actor class NFTSale( _owner: Principal, ) = this {
         usersEntries := [];
         tokensEntries := [];
     };
+
+    private var users_list = HashMap.HashMap<Principal, User.UserInfo>(1, Principal.equal, Principal.hash);
+
+    public func getAll(): async [User.UserInfo] {
+        return Iter.toArray(users_list.vals());
+    };
+
+    public func createAccount(user: Principal, info: User.UserInfo): async [User.UserInfo] {
+        users_list.put(user, info);
+        return await getAll();
+    };
+    
+    public func updateAccount(user: Principal, info: User.UserInfo): async ?User.UserInfo {
+        return users_list.replace(user, info);
+    };
+
+    public func deleteAccount(user: Principal): async ?User.UserInfo {
+        return users_list.remove(user);
+    };
 };
