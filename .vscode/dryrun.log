@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kunix/learning/motoko/mint-nft'
+npm install
+dfx canister create --all
+dfx build
+make: Leaving directory '/home/kunix/learning/motoko/mint-nft'
+ 
