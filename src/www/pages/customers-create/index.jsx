@@ -157,7 +157,7 @@ function CreateNft(props) {
 
 
 	async function updateData() {
-		const res = await superheroes.updateAccount(Principal.fromText(principal), 
+		const res = await superheroes.createAccount(Principal.fromText(principal), 
       {
         "first_name": firstName,
         "last_name": lastName, 
@@ -185,7 +185,7 @@ function CreateNft(props) {
 	return (
 		<Container>
 			<Wrapper>
-				<Title>Customers Edit</Title>
+				<Title>Customers Register</Title>
 				<BodyWrapper>
 					<TextField
 						required

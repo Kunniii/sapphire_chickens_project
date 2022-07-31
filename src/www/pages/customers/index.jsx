@@ -152,7 +152,14 @@ function CreateNft(props) {
 	  ) {
 		return { id, name, birthday, phone, sex };
 	  }
-	  
+	  function register() {
+      window.location.href = '/customers/create'
+    }
+
+    async function deleteAcc() {
+      const res = await superheroes.deleteAccount(Principal.fromText(principal));
+      console.log(res)
+    }
 	//   const rows = [
 	// 	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
 	// 	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
@@ -165,7 +172,7 @@ function CreateNft(props) {
 		<Container>
 			<Wrapper>
 				<Title>Customers List</Title>
-				<Button onClick={() => getUserInfo()}>Register</Button>
+				<Button onClick={() => register()}>Register</Button>
 				<BodyWrapper>
 					<TableContainer component={Paper}>
 						<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -180,7 +187,7 @@ function CreateNft(props) {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{rows.map((row) => (
+								{rows.map((row, index) => (
 									<TableRow
 										key={row.name}
 										sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -192,7 +199,7 @@ function CreateNft(props) {
 										<TableCell align="right">{row.birthday}</TableCell>
 										<TableCell align="right">{row.phone}</TableCell>
 										<TableCell align="right">{row.sex}</TableCell>
-										<TableCell align="right"><a href='/customers/1'>Update</a>&nbsp;<a>Delete</a></TableCell>
+										<TableCell align="right"><a href={`/customers/${index}`}>Update</a>&nbsp;<Button onClick={() => deleteAcc()}>Delete</Button></TableCell>
 									</TableRow>
 								))}
 							</TableBody>
