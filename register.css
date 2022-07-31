@@ -1,0 +1,28 @@
+.content {
+    margin-top: 5%;
+}
+
+.title {
+    margin-bottom: 3rem;
+}
+
+.form-register .row {
+    margin: 2rem;
+}
+
+.form-register .button-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-register .button-form input,
+.form-register .button-form a {
+    min-width: 100px;
+}
+
+.shadow-button {
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+}
